@@ -11,7 +11,7 @@ export const CustomNode1 = ({ id, data }) => {
     );
 
     const handles = [
-        { id: 'input1', type: 'source', position: Position.Left },
+        { id: 'input1', type: 'target', position: Position.Left },
         { id: 'output1', type: 'source', position: Position.Right },
 
     ];

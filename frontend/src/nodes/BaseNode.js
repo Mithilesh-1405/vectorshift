@@ -2,6 +2,7 @@
 import { Handle, Position } from 'reactflow';
 import PropTypes from 'prop-types';
 // import { Position } from 'reactflow';
+import '../css/Basestyle.css';
 const BaseNode = ({ id, label, content, handles }) => {
     return (
         <div style={{

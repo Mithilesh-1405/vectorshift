@@ -18,36 +18,32 @@ export const InputNode = ({ id, data }) => {
 
   const content = (
     <div >
-      <div>
-        <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }} >
-          Name:
-          <input
-            type="text"
-            value={currName}
-            onChange={handleNameChange}
-            className="custom-input font_size inputStyle"
-          />
-        </label>
+      <div className='container font_size margin'>
+        <label className='textLabel'>Name</label>
+        <div >
+          <input className='text expanding-input' value={currName} onChange={handleNameChange}></input>
+        </div>
       </div>
-      <label style={{
-        display: 'flex', alignItems: 'center', gap: '5px'
-      }}>
-        Type:
-        <select
-          value={inputType}
-          onChange={handleTypeChange}
-          style={{
-            border: 'none',
-            outline: 'none',
-            marginTop: '5px',
-            backgroundColor: '#FFFFFF',
-          }}
-          className="custom-select font_size"
-        >
-          <option value="Text">Text</option>
-          <option value="File">File</option>
-        </select>
-      </label>
+      <div className='container font_size margin ' >
+        <label className='textLabel'>Type</label>
+        <div >
+          <select
+            value={inputType}
+            onChange={handleTypeChange}
+            style={{
+              border: 'none',
+              outline: 'none',
+              marginTop: '5px',
+              backgroundColor: '#FFFFFF',
+            }}
+            className="font_size"
+          >
+            <option value="Text">Text</option>
+            <option value="File">File</option>
+          </select>
+        </div>
+      </div>
+
     </div >
 
   );

@@ -1,5 +1,5 @@
 // draggableNode.js
-
+import './css/Basestyle.css';
 export const DraggableNode = ({ type, label }) => {
   const onDragStart = (event, nodeType) => {
     const appData = { nodeType }
@@ -10,24 +10,12 @@ export const DraggableNode = ({ type, label }) => {
 
   return (
     <div
-      className={type}
+      className='customNode'
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = 'grab')}
-      style={{
-        cursor: 'grab',
-        minWidth: '80px',
-        height: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        borderRadius: '8px',
-        backgroundColor: '#1C2536',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        padding: '0px 10px',
-      }}
       draggable
     >
-      <span style={{ color: '#FAF6F6' }}>{label}</span>
+      <span>{label}</span>
     </div>
   );
 };

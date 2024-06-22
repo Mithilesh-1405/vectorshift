@@ -9,7 +9,7 @@ export const LLMNode = ({ id, data }) => {
   );
 
   const handles = [
-    { id: 'system', type: 'target', position: Position.Left, style: { top: '33%' } },
+    { id: 'system', type: 'target', position: Position.Left },
     // { id: 'prompt', type: 'target', position: Position.Top },
     { id: 'response', type: 'source', position: Position.Right },
   ];

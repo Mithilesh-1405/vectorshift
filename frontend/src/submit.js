@@ -36,7 +36,6 @@ export const SubmitButton = () => {
                 const result = await response.json();
                 console.log('Data submitted successfully', result);
                 setDAG(result.is_dag)
-
                 toggleModal();
 
             } else {
@@ -65,7 +64,7 @@ export const SubmitButton = () => {
                             <p>Is DAG: {isDAG ? 'Yes' : 'No'}</p>
                         </div>
                         <button className="close-modal" onClick={toggleModal}>
-                            CLOSE
+                            &times;
                         </button>
                     </div>
                 </div>

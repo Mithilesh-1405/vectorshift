@@ -16,19 +16,34 @@ export const OutputNode = ({ id, data }) => {
   };
 
   const content = (
-    <div>
-      <label>
-        Name:
-        <input type="text" value={currName} onChange={handleNameChange} />
-      </label>
-      <label>
-        Type:
-        <select value={outputType} onChange={handleTypeChange}>
-          <option value="Text">Text</option>
-          <option value="File">Image</option>
-        </select>
-      </label>
-    </div>
+    <div >
+      <div className='container font_size margin'>
+        <label className='textLabel'>Name</label>
+        <div >
+          <input className='text expanding-input' value={currName} onChange={handleNameChange}></input>
+        </div>
+      </div>
+      <div className='container font_size margin ' >
+        <label className='textLabel'>Type</label>
+        <div >
+          <select
+            value={outputType}
+            onChange={handleTypeChange}
+            style={{
+              border: 'none',
+              outline: 'none',
+              marginTop: '5px',
+              backgroundColor: '#FFFFFF',
+            }}
+            className="font_size"
+          >
+            <option value="Text">Text</option>
+            <option value="File">File</option>
+          </select>
+        </div>
+      </div>
+
+    </div >
   );
 
   const handles = [

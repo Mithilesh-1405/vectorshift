@@ -23,7 +23,7 @@ export const TextNode = ({ id, data }) => {
       type: 'target',
       position: Position.Left,
       style: {
-        top: `${30 * (index + 20)}px`, // Adjust the top position as needed
+        top: `${30 * (index + 80)}px`, // Adjust the top position as needed
         backgroundColor: '#9e9de1'
       }
     }));
