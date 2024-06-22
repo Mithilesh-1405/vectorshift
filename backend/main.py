@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",  # Replace with your frontend's origin
+    "http://localhost:3000",  
 ]
 
 app.add_middleware(
@@ -28,15 +28,14 @@ class PipelineData(BaseModel):
 def parse_pipeline(data: PipelineData):
     num_nodes = len(data.nodes)
     num_edges = len(data.edges)
-
-    # Build adjacency list for the graph
+    
     adjacency_list = {node['id']: [] for node in data.nodes}
     for edge in data.edges:
         source = edge['source']
         target = edge['target']
         adjacency_list[source].append(target)
 
-    # Function to perform topological sort
+    
     def is_dag(adjacency_list):
         from collections import deque
         

@@ -24,6 +24,8 @@ export const SubmitButton = () => {
 
     const handleSubmit = async () => {
         try {
+            console.log("Nodes", nodes)
+            console.log("Edges", edges)
             const response = await fetch('http://localhost:8000/pipelines/parse', {
                 method: 'POST',
                 headers: {
@@ -50,22 +52,41 @@ export const SubmitButton = () => {
     }, [isDAG]);
     return (
         <div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className='flexCenter'>
                 <button className='butn' type="button" onClick={handleSubmit}>Submit</button>
             </div>
             {modal && (
-                <div className="modal">
+                <div className='modal'>
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                        <h2>Pipeline Results</h2>
-                        <div>
-                            <p>Number Of Nodes: {nodes.length}</p>
-                            <p>Number Of Edges: {edges.length}</p>
-                            <p>Is DAG: {isDAG ? 'Yes' : 'No'}</p>
+                        <div className='b1'>
+                            {nodes.length > 0 ? 'Pipeline Submitted Successfully' : 'Please use atleast 1 Node'}
                         </div>
-                        <button className="close-modal" onClick={toggleModal}>
-                            &times;
-                        </button>
+                        {nodes.length > 0 && (
+                            <div className='b3'>
+                                <table className="info-table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Number Of Nodes</th>
+                                            <td>{nodes.length}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Number Of Edges</th>
+                                            <td>{edges.length}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>IsDAG</th>
+                                            <td>{isDAG ? 'True' : 'False'}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                        <div className='b2'>
+                            <button className="close-modal" onClick={toggleModal}>
+                                &times;
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
