@@ -7,6 +7,11 @@ import {
   applyEdgeChanges,
   MarkerType,
 } from 'reactflow';
+import CustomEdge from './CustomEdge'
+
+const edgeTypes = {
+  custom: CustomEdge,
+};
 
 export const useStore = create((set, get) => ({
   nodes: [],
@@ -37,7 +42,14 @@ export const useStore = create((set, get) => ({
   },
   onConnect: (connection) => {
     set({
-      edges: addEdge({ ...connection, type: 'smoothstep', animated: true, markerEnd: { type: MarkerType.Arrow, height: '40px', width: '40px' } }, get().edges),
+      edges: addEdge({
+        ...connection,
+        type: edgeTypes.custom,
+        animated: true,
+        style: { stroke: '#6366f1', strokeWidth: 3 }, // Customize the edge style
+        markerEnd: { type: MarkerType.Arrow, height: '20px', width: '20px', color: '#6366f1' }
+
+      }, get().edges),
     });
   },
   updateNodeField: (nodeId, fieldName, fieldValue) => {

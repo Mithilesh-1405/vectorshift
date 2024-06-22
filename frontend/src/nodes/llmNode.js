@@ -10,8 +10,8 @@ export const LLMNode = ({ id, data }) => {
 
   const handles = [
     { id: 'system', type: 'target', position: Position.Left },
-    // { id: 'prompt', type: 'target', position: Position.Top },
     { id: 'response', type: 'source', position: Position.Right },
+    { id: 'prompt', type: 'source', position: Position.Top },
   ];
 
   return <BaseNode id={id} label="LLM" content={content} handles={handles} />;

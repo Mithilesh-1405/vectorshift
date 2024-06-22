@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 import '../css/Basestyle.css';
 const BaseNode = ({ id, label, content, handles }) => {
     return (
-        <div style={{
-            minWidth: 300, minHeight: 100, borderRadius: '10px', border: '3px solid #9e9de1', backgroundColor: '#FFFFFF'
-        }}>
-
+        <div className='nodestyle'>
             < div >
                 <span style={{ fontWeight: 'bold', padding: '8px' }}>{label}</span>
             </div >
@@ -24,7 +21,8 @@ const BaseNode = ({ id, label, content, handles }) => {
                         position={handle.position}
                         id={`${id}-${handle.id}`}
                         style={{
-                            ...handle.styles,
+                            ...handle.style,
+
                             backgroundColor: '#9e9de1'
 
                         }}
@@ -32,8 +30,6 @@ const BaseNode = ({ id, label, content, handles }) => {
                 ))
             }
         </div >
-
-
     );
 };
 

@@ -1,14 +1,12 @@
-// TextNode.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BaseNode from './BaseNode';
 import { Position } from 'reactflow';
-export const TextNode = ({ id, data }) => {
 
+export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
   const [handles, setHandles] = useState([
-    { id: 'output', type: 'source', position: Position.Right },
   ]);
-  const textarea = document.querySelector('.expanding-input');
+  const textareaRef = useRef(null);
 
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
@@ -23,31 +21,43 @@ export const TextNode = ({ id, data }) => {
       type: 'target',
       position: Position.Left,
       style: {
-        top: `${30 * (index + 80)}px`, // Adjust the top position as needed
+        top: `${10 + index * 30}px`, 
         backgroundColor: '#9e9de1'
       }
     }));
 
-    setHandles([
-      { id: 'output', type: 'source', position: Position.Right },
-      ...newHandles,
-    ]);
+    setHandles([{ id: 'output', type: 'source', position: Position.Right }, ...newHandles]);
+    console.log(handles)
   }, [currText]);
 
-  textarea?.addEventListener('input', function () {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
-  });
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      const handleInput = () => {
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`;
+      };
+
+      textarea?.addEventListener('input', handleInput);
+      return () => {
+        textarea?.removeEventListener('input', handleInput);
+      };
+    }
+  }, []);
 
   const content = (
     <div className='container font_size'>
       <label className='textLabel'>Text</label>
-      <div >
-        <textarea className='text expanding-input' value={currText} onChange={handleTextChange}></textarea>
+      <div>
+        <textarea
+          ref={textareaRef}
+          className='text expanding-input'
+          value={currText}
+          onChange={handleTextChange}
+        ></textarea>
       </div>
     </div>
   );
-
 
   return <BaseNode id={id} label="Text" content={content} handles={handles} />;
 };

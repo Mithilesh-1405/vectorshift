@@ -29,20 +29,20 @@ body.active-modal {
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
-  padding: 14px 28px;
+  background: #cacaca;
   border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
+  min-width: 25rem;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 5;
+  gap: 10px;
 }
 
 .close-modal {
   height: 2rem;
   width: 2rem;
   background-color: rgb(219, 35, 35);
-  position: absolute;
-  top: 10px;
-  right: 10px;
   border-radius: 5px;
   font-size: x-large;
   border: none;
@@ -52,4 +52,45 @@ body.active-modal {
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
   background-color: #1c2536;
   cursor: pointer;
+}
+.b1 {
+  grid-column: 1/1;
+  grid-row: 1/1;
+  font-size: larger;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #fffcfc;
+  padding: 1rem;
+}
+.b2 {
+  grid-column: 2/2;
+  grid-row: 1/1;
+  position: absolute;
+  right: 1px;
+  top: -45px;
+  padding: 2px;
+}
+.b3 {
+  grid-column: 1/2;
+  grid-row: 2/5;
+  background-color: #fffcfc;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table th,
+.info-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #4e4e4e;
+}
+
+.info-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
