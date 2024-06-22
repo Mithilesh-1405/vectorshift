@@ -46,7 +46,7 @@ export const useStore = create((set, get) => ({
         ...connection,
         type: edgeTypes.custom,
         animated: true,
-        style: { stroke: '#6366f1', strokeWidth: 3 }, // Customize the edge style
+        style: { stroke: '#6366f1', strokeWidth: 3 }, 
         markerEnd: { type: MarkerType.Arrow, height: '20px', width: '20px', color: '#6366f1' }
 
       }, get().edges),
