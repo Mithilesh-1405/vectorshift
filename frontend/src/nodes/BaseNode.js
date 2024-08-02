@@ -1,9 +1,19 @@
 // BaseNode.js
 import { Handle, Position } from 'reactflow';
 import PropTypes from 'prop-types';
-// import { Position } from 'reactflow';
+
 import '../css/Basestyle.css';
 const BaseNode = ({ id, label, content, handles }) => {
+    const handleSpacing = 20; 
+    const handleStyle = (index) => ({
+        position: 'absolute',
+        left: '-110px', 
+        top: `${handleSpacing * (index)}px`,
+        textAlign: 'right',
+        whiteSpace: 'nowrap',
+        width: '100px', 
+    });
+
     return (
         <div className='nodestyle'>
             < div >
@@ -14,19 +24,24 @@ const BaseNode = ({ id, label, content, handles }) => {
                 {content}
             </div>
             {
-                handles.map(handle => (
-                    <Handle
-                        key={handle.id}
-                        type={handle.type}
-                        position={handle.position}
-                        id={`${id}-${handle.id}`}
-                        style={{
-                            ...handle.style,
+                handles.map((handle, index) => (
+                    <div key={handle.id}>
+                        <Handle
+                            key={handle.id}
+                            type={handle.type}
+                            position={handle.position}
+                            id={`${id}-${handle.id}`}
+                            style={{
+                                ...handle.style,
+                                backgroundColor: '#9e9de1'
 
-                            backgroundColor: '#9e9de1'
+                            }}
 
-                        }}
-                    />
+                        />
+                        <span style={handleStyle(index)}>{handle.variable}</span>
+
+                    </div>
+
                 ))
             }
         </div >
@@ -42,6 +57,7 @@ BaseNode.propTypes = {
         type: PropTypes.oneOf(['source', 'target']).isRequired,
         position: PropTypes.oneOf(Object.values(Position)).isRequired,
         style: PropTypes.object,
+        variable: PropTypes.string.isRequired
     })).isRequired,
 };
 
